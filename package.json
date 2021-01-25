@@ -1,6 +1,7 @@
 {
   "name": "vue-word-cloud",
   "version": "0.1.0",
+  "description": "a vue component of word cloud",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
