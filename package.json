@@ -2,12 +2,20 @@
   "name": "vue-word-cloud",
   "version": "0.1.0",
   "description": "a vue component of word cloud",
-  "private": true,
+  "main": "dist/vue-word-cloud.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "keywords": [
+    "component",
+    "word cloud",
+    "vue"
+  ],
+  "author": "yaodebian",
+  "repository": "https://github.com/yaodebian/vue-word-cloud.git",
+  "license": "MIT",
   "dependencies": {
     "core-js": "^3.6.5",
     "ladash": "^1.2.0",
