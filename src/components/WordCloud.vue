@@ -11,7 +11,11 @@
       :style="`left: ${left}; top: ${top};`"
       v-html="tooltipHtml"
     ></div>
-    <WordCloudLoading v-show="loading"></WordCloudLoading>
+    <div v-if="loadingBox" v-show="loading">
+      <slot name="loading">
+        <WordCloudLoading></WordCloudLoading>
+      </slot>
+    </div>
   </div>
 </template>
 
@@ -31,6 +35,10 @@ export default {
       type: Object,
       default: () => ({}),
     },
+    loadingBox: {
+      type: Boolean,
+      default: true
+    }
   },
   components: {
     WordCloudLoading
