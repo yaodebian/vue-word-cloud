@@ -12,6 +12,9 @@ module.exports = {
   },
   "rules": {
     "semi": ["error", "never"],
-    "no-debugger": 0
+    "no-debugger": 0,
+    "quotes": ["error", "single", {
+      "allowTemplateLiterals": true
+    }],
   }
 }

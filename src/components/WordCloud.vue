@@ -16,10 +16,10 @@
 
 <script>
 // import npm package
-import WordCloud from "wordcloud"
+import WordCloud from 'wordcloud'
 
 // import utils
-import { parseFormatter } from "@/utils/tool.js"
+import { parseFormatter } from '@/utils/tool.js'
 
 export default {
   props: {
@@ -32,11 +32,11 @@ export default {
     return {
       wordCloudOpt: {},
       initStatus: false,
-      wordcloudEl: "",
+      wordcloudEl: '',
       left: 0,
       top: 0,
-      cursor: "default",
-      tooltipHtml: "",
+      cursor: 'default',
+      tooltipHtml: '',
       showTooltip: false,
       box: null,
       mouseoutListener: null,
@@ -60,26 +60,26 @@ export default {
         // '$nextTick' can be guaranteed to get dom instance
         this.$nextTick(() => {
           if (!this.initStatus) {
-            this.wordcloudEl = this.$refs["wordcloud"]
+            this.wordcloudEl = this.$refs['wordcloud']
           }
-          const { clientWidth, clientHeight } = this.$refs["box"]
-          this.wordcloudEl.setAttribute("width", clientWidth)
-          this.wordcloudEl.setAttribute("height", clientHeight)
+          const { clientWidth, clientHeight } = this.$refs['box']
+          this.wordcloudEl.setAttribute('width', clientWidth)
+          this.wordcloudEl.setAttribute('height', clientHeight)
           WordCloud(this.wordcloudEl, val)
         })
       },
     },
   },
   mounted() {
-    this.box = this.$refs["box"]
+    this.box = this.$refs['box']
     this.mouseoutListener = this.box.addEventListener(
-      "mouseout",
+      'mouseout',
       this.mouseoutHandler
     )
   },
   // tip: we should remove all event listener when being destroyed
   beforeDestroy() {
-    this.box.removeEventListener("mouseout", this.mouseoutHandler)
+    this.box.removeEventListener('mouseout', this.mouseoutHandler)
   },
   methods: {
     // mouseout handler for close tooltip box
@@ -93,15 +93,15 @@ export default {
         this.left = `${event.offsetX + 15}px`
         this.top = `${event.offsetY + 10}px`
         this.showTooltip = true
-        this.cursor = "pointer"
+        this.cursor = 'pointer'
         if (this.wordCloudOpt.tooltip && !this.wordCloudOpt.tooltip.show) {
           this.showTooltip = false
-          this.cursor = "default"
+          this.cursor = 'default'
         } else {
           this.tooltipHtml =
             this.wordCloudOpt.tooltip &&
             this.wordCloudOpt.tooltip.formatter &&
-            typeof this.wordCloudOpt.tooltip.formatter === "function"
+            typeof this.wordCloudOpt.tooltip.formatter === 'function'
               ? this.wordCloudOpt.tooltip.formatter(item, dimension, event)
               : this.wordCloudOpt.tooltip && this.wordCloudOpt.tooltip.formatter
               ? parseFormatter(this.wordCloudOpt.tooltip.formatter, item)
@@ -109,7 +109,7 @@ export default {
         }
       } else {
         this.showTooltip = false
-        this.cursor = "default"
+        this.cursor = 'default'
       }
     },
     // get font size
@@ -141,7 +141,7 @@ export default {
           }
           this.wordCloudOpt.list = []
           const addtionalAttrs = Object.keys(this.wordCloudOpt.data[0]).filter(
-            (key) => key !== "name" && key !== "value"
+            (key) => key !== 'name' && key !== 'value'
           )
           this.wordCloudOpt.data.forEach((item, index) => {
             const listItem = [item.name, this.getFontSize(index), item.value]
@@ -161,7 +161,8 @@ export default {
     initTooltip() {
       // prevent developer overriding hover option
       const hover = this.wordCloudOpt.hover || ''
-      const handler = (item, dimension, event) => { // eslint-disable-line
+      const handler = (item, dimension, event) => {
+        // eslint-disable-line
         let itemData = {}
         if (!item) {
           itemData = ''
@@ -201,13 +202,21 @@ export default {
           throw new Error(`type error: option 'colors' should be an array`)
         }
 
-        if (this.wordCloudOpt.fonts.length === 0 || !this.wordCloudOpt.list || !Array.isArray(this.wordCloudOpt.list) || this.wordCloudOpt.list.length === 0) {
+        if (
+          this.wordCloudOpt.fonts.length === 0 ||
+          !this.wordCloudOpt.list ||
+          !Array.isArray(this.wordCloudOpt.list) ||
+          this.wordCloudOpt.list.length === 0
+        ) {
           return
         }
-        
+
         const len = this.wordCloudOpt.fonts.length
         this.wordCloudOpt.list.forEach((item, index) => {
-          item[1] = index < len ? this.wordCloudOpt.fonts[index] : this.wordCloudOpt.fonts[len - 1]
+          item[1] =
+            index < len
+              ? this.wordCloudOpt.fonts[index]
+              : this.wordCloudOpt.fonts[len - 1]
         })
       }
     },

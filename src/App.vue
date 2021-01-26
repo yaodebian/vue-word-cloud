@@ -137,7 +137,7 @@ export default {
         fontFamily: 'Times, serif',
         rotateRatio: 1,
         shrinkToFit: true,
-        backgroundColor: 'transparent',
+        backgroundColor: 'transparent'
       }
     }
   }
