@@ -22,6 +22,7 @@
 <script>
 // import npm package
 import WordCloud from 'wordcloud'
+import DomResizeListener from 'dom-resize-listener'
 
 // import utils
 import { parseFormatter } from '@/utils/tool.js'
@@ -38,6 +39,10 @@ export default {
     loadingBox: {
       type: Boolean,
       default: true
+    },
+    resize: {
+      type: Boolean,
+      default: false
     }
   },
   components: {
@@ -48,13 +53,14 @@ export default {
       loading: true,
       wordCloudOpt: {},
       initStatus: false,
-      wordcloudEl: '',
+      wordCloudEl: '',
       left: 0,
       top: 0,
       cursor: 'default',
       tooltipHtml: '',
       showTooltip: false,
-      box: null
+      box: null,
+      resizeObserver: null
     }
   },
   watch: {
@@ -67,7 +73,7 @@ export default {
     },
     wordCloudOpt: {
       immediate: true,
-      handler(val) {
+      handler() {
         this.initData()
         this.initFont()
         this.initColor()
@@ -76,17 +82,13 @@ export default {
         this.$nextTick(() => {
           const status = this.initStatus
           if (!this.initStatus) {
-            this.wordcloudEl = this.$refs['wordcloud']
+            this.wordCloudEl = this.$refs['wordcloud']
             this.initStatus = true
+            this.initResize()
           }
-          const { clientWidth, clientHeight } = this.$refs['box']
-          this.wordcloudEl.setAttribute('width', clientWidth)
-          this.wordcloudEl.setAttribute('height', clientHeight)
-          WordCloud(this.wordcloudEl, val)
-
-          this.wordcloudEl.addEventListener('wordcloudstop', () => {
+          this.renderWordCloud()
+          this.wordCloudEl.addEventListener('wordcloudstop', () => {
             if (status) {
-              console.log('stop')
               this.loading = false
             }
           })
@@ -103,9 +105,25 @@ export default {
     this.box.removeEventListener('mouseout', this.mouseoutHandler)
   },
   methods: {
+    // resize word cloud
+    initResize() {
+      if (this.resize) {
+        this.resizeObserver = new DomResizeListener()
+        this.resizeObserver.addListener(this.wordCloudEl, () => {
+          this.renderWordCloud()
+        })
+      }
+    },
     // loading data
     loadingData() {
       this.loading = true
+    },
+    // render word cloud
+    renderWordCloud() {
+      const { clientWidth, clientHeight } = this.$refs['box']
+      this.wordCloudEl.setAttribute('width', clientWidth)
+      this.wordCloudEl.setAttribute('height', clientHeight)
+      WordCloud(this.wordCloudEl, this.wordCloudOpt)
     },
     // mouseout handler for close tooltip box
     mouseoutHandler() {

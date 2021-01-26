@@ -1,7 +1,7 @@
 <template>
   <div>
-     <h2>Demo3: No Loading</h2>
-    <WordCloud ref="wordCloud" class="word-cloud" :option="wordCloudOpt" :loading-box="false"></WordCloud>
+    <h2>Demo5: Resize</h2>
+    <WordCloud ref="wordCloud" class="word-cloud" :option="wordCloudOpt" :resize="true"></WordCloud>
   </div>
 </template>
 
@@ -10,7 +10,7 @@
 import WordCloud from '@/components/WordCloud.vue'
 
 export default {
-  name: 'LoadingNoneDemo',
+  name: 'ResizeDemo',
   components: {
     WordCloud
   },
