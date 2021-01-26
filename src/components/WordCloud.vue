@@ -11,6 +11,7 @@
       :style="`left: ${left}; top: ${top};`"
       v-html="tooltipHtml"
     ></div>
+    <WordCloudLoading v-show="loading"></WordCloudLoading>
   </div>
 </template>
 
@@ -21,6 +22,9 @@ import WordCloud from 'wordcloud'
 // import utils
 import { parseFormatter } from '@/utils/tool.js'
 
+// import components
+import WordCloudLoading from './WordCloudLoading'
+
 export default {
   props: {
     option: {
@@ -28,8 +32,12 @@ export default {
       default: () => ({}),
     },
   },
+  components: {
+    WordCloudLoading
+  },
   data() {
     return {
+      loading: true,
       wordCloudOpt: {},
       initStatus: false,
       wordcloudEl: '',
@@ -38,8 +46,7 @@ export default {
       cursor: 'default',
       tooltipHtml: '',
       showTooltip: false,
-      box: null,
-      mouseoutListener: null,
+      box: null
     }
   },
   watch: {
@@ -59,29 +66,39 @@ export default {
         this.initTooltip()
         // '$nextTick' can be guaranteed to get dom instance
         this.$nextTick(() => {
+          const status = this.initStatus
           if (!this.initStatus) {
             this.wordcloudEl = this.$refs['wordcloud']
+            this.initStatus = true
           }
           const { clientWidth, clientHeight } = this.$refs['box']
           this.wordcloudEl.setAttribute('width', clientWidth)
           this.wordcloudEl.setAttribute('height', clientHeight)
           WordCloud(this.wordcloudEl, val)
+
+          this.wordcloudEl.addEventListener('wordcloudstop', () => {
+            if (status) {
+              console.log('stop')
+              this.loading = false
+            }
+          })
         })
       },
     },
   },
   mounted() {
     this.box = this.$refs['box']
-    this.mouseoutListener = this.box.addEventListener(
-      'mouseout',
-      this.mouseoutHandler
-    )
+    this.box.addEventListener('mouseout', this.mouseoutHandler)
   },
   // tip: we should remove all event listener when being destroyed
   beforeDestroy() {
     this.box.removeEventListener('mouseout', this.mouseoutHandler)
   },
   methods: {
+    // loading data
+    loadingData() {
+      this.loading = true
+    },
     // mouseout handler for close tooltip box
     mouseoutHandler() {
       this.showTooltip = false

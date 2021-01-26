@@ -2,7 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <h1>Vue Word Cloud</h1>
-    <WordCloud class="word-cloud" :option="wordCloudOpt"></WordCloud>
+    <WordCloud ref="wordCloud" class="word-cloud" :option="wordCloudOpt"></WordCloud>
   </div>
 </template>
 
@@ -38,7 +38,20 @@ export default {
           '#cae765',
           '#cccccc'
         ],
-        data: [
+        data: [],
+        weightFactor: 1.8,
+        fontWeight: 'normal',
+        fontFamily: 'Times, serif',
+        rotateRatio: 1,
+        shrinkToFit: true,
+        backgroundColor: 'transparent'
+      }
+    }
+  },
+  mounted() {
+    this.$refs['wordCloud'].loadingData()
+    setTimeout(() => {
+      this.wordCloudOpt.data = [
           {
             name: '困难救助',
             value: 83
@@ -131,15 +144,8 @@ export default {
             name: '农林水利',
             value: 0
           },
-        ],
-        weightFactor: 1.8,
-        fontWeight: 'normal',
-        fontFamily: 'Times, serif',
-        rotateRatio: 1,
-        shrinkToFit: true,
-        backgroundColor: 'transparent'
-      }
-    }
+        ]
+    }, 10000)
   }
 }
 </script>
