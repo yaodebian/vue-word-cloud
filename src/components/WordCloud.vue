@@ -25,7 +25,7 @@ import WordCloud from 'wordcloud'
 import DomResizeListener from 'dom-resize-listener'
 
 // import utils
-import { parseFormatter } from '@/utils/tool.js'
+import { parseFormatter, parseShape } from '@/utils/tool.js'
 
 // import components
 import WordCloudLoading from './WordCloudLoading'
@@ -73,11 +73,12 @@ export default {
     },
     wordCloudOpt: {
       immediate: true,
-      handler() {
+      async handler() {
         this.initData()
         this.initFont()
         this.initColor()
         this.initTooltip()
+        await this.initShape()
         // '$nextTick' can be guaranteed to get dom instance
         this.$nextTick(() => {
           const status = this.initStatus
@@ -286,6 +287,20 @@ export default {
         }
       }
     },
+    // init shape polar equation
+    initShape() {
+      if (this.wordCloudOpt.imageShape) {
+        const img = new Image()
+        img.src = this.wordCloudOpt.imageShape
+
+        return new Promise((resolve) => {
+          img.onload = () => {
+            this.wordCloudOpt.shape = new Function('theta', parseShape(img))
+            resolve()
+          }
+        })
+      }
+    }
   },
 }
 </script>
