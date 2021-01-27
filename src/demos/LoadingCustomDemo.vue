@@ -30,7 +30,7 @@ export default {
           //   return `${item.name}<br>${item.value}`
           // },
         },
-        fonts: [80, 60, 23, 22, 21, 20, 19, 18, 17, 16, 13],
+        fonts: [25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 13],
         colors: [
           'red',
           'yellow',
