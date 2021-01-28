@@ -60,7 +60,8 @@ export default {
       tooltipHtml: '',
       showTooltip: false,
       box: null,
-      resizeObserver: null
+      resizeObserver: null,
+      wordMark: 0
     }
   },
   watch: {
@@ -246,12 +247,10 @@ export default {
           throw new Error(`type error: option 'colors' should be an array`)
         }
 
-        if (
-          this.wordCloudOpt.fonts.length === 0 ||
-          !this.wordCloudOpt.list ||
-          !Array.isArray(this.wordCloudOpt.list) ||
-          this.wordCloudOpt.list.length === 0
-        ) {
+        if (this.wordCloudOpt.fonts.length === 0 
+          || !this.wordCloudOpt.list 
+          || !Array.isArray(this.wordCloudOpt.list) 
+          || this.wordCloudOpt.list.length === 0) {
           return
         }
 
@@ -269,21 +268,23 @@ export default {
       if (this.wordCloudOpt.colors) {
         if (!Array.isArray(this.wordCloudOpt.colors)) {
           throw new Error(`type error: option 'colors' should be an array`)
-        } else {
-          const len = this.wordCloudOpt.colors.length
-          if (!len) return
-          this.wordCloudOpt.color = (word) => {
-            let colorIndex = 0
-            this.wordCloudOpt.list.forEach((item, index) => {
-              if (item[0] === word) {
-                colorIndex = index
-              }
-            })
-            return (
-              this.wordCloudOpt.colors[colorIndex] ||
-              this.wordCloudOpt.colors[len - 1]
-            )
-          }
+        }
+
+        if (this.wordCloudOpt.colors.length === 0 
+          || !this.wordCloudOpt.list 
+          || !Array.isArray(this.wordCloudOpt.list) 
+          || this.wordCloudOpt.list.length === 0) {
+          return
+        }
+
+        const len = this.wordCloudOpt.colors.length
+        this.wordCloudOpt.color = () => {
+          const index = this.wordMark
+          this.wordMark++
+          return (
+            this.wordCloudOpt.colors[index] ||
+            this.wordCloudOpt.colors[len - 1]
+          )
         }
       }
     },

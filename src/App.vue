@@ -7,6 +7,7 @@
     <LoadingNoneDemo ref="wordCloud" class="word-cloud__demo"></LoadingNoneDemo>
     <ResizeDemo ref="wordCloud" class="word-cloud__demo"></ResizeDemo>
     <ShapeDemo ref="wordCloud" class="word-cloud__demo"></ShapeDemo>
+    <SameTextDemo ref="wordCloud" class="word-cloud__demo"></SameTextDemo>
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import LoadingCustomDemo from '@/demos/LoadingCustomDemo.vue'
 import LoadingNoneDemo from '@/demos/LoadingNoneDemo.vue'
 import ResizeDemo from '@/demos/ResizeDemo.vue'
 import ShapeDemo from '@/demos/ShapeDemo.vue'
+import SameTextDemo from '@/demos/SameTextDemo.vue'
 
 export default {
   name: 'App',
@@ -25,7 +27,8 @@ export default {
     LoadingCustomDemo,
     LoadingNoneDemo,
     ResizeDemo,
-    ShapeDemo
+    ShapeDemo,
+    SameTextDemo
   }
 }
 </script>
