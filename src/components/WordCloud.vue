@@ -290,9 +290,9 @@ export default {
     },
     // init shape polar equation
     initShape() {
-      if (this.wordCloudOpt.imageShape) {
+      if (this.wordCloudOpt.vImageShape) {
         const img = new Image()
-        img.src = this.wordCloudOpt.imageShape
+        img.src = this.wordCloudOpt.vImageShape
 
         return new Promise((resolve) => {
           img.onload = () => {

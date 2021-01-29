@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       wordCloudOpt: {
-        imageShape: require('@/assets/star.png'),
+        vImageShape: require('@/assets/star.png'),
         tooltip: {
           show: true,
           formatter: '标签名：{{name}}<br>数值：{{value}}',
