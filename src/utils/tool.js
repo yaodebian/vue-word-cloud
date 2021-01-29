@@ -73,15 +73,6 @@ export const parseShape = (img) => {
       return Math.max(prev, curr)
     })
 
-  //   const fn = new Function('theta', `
-  //     var max = ${max}
-  //     var leng = ${JSON.stringify(d)}
-
-  //     return leng[(theta / (2 * Math.PI)) * leng.length | 0] / max
-  // `)
-  // console.log(fn())
-  // debugger
-
     return `
       var max = ${max}
       var leng = ${JSON.stringify(d)}

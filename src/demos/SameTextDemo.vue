@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       wordCloudOpt: {
-        imageShape: require('@/assets/moon01.jpg'),
+        imageShape: require('@/assets/star.png'),
         tooltip: {
           show: true,
           formatter: '标签名：{{name}}<br>数值：{{value}}',
@@ -53,7 +53,7 @@ export default {
     this.$refs['wordCloud'].loadingData()
     setTimeout(() => {
       const list = []
-      for (let i = 0; i < 300; i++) {
+      for (let i = 0; i < 100; i++) {
         list.push({
           name: '冬沐',
           value: 24

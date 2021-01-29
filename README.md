@@ -17,3 +17,4 @@ in development: complete basic functions
 - optimization
   - css isolation
   - situation: same text
+  - prevent option name conflicts
