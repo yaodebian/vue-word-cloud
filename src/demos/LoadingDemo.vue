@@ -24,8 +24,8 @@ export default {
           //   return `${item.name}<br>${item.value}`
           // },
         },
-        fonts: [25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 13],
-        colors: [
+        vFonts: [25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 13],
+        vColors: [
           'red',
           'yellow',
           '#84d9fa',
@@ -38,7 +38,7 @@ export default {
           '#cae765',
           '#cccccc'
         ],
-        data: [],
+        vData: [],
         weightFactor: 1.8,
         fontWeight: 'normal',
         fontFamily: 'Times, serif',
@@ -51,7 +51,7 @@ export default {
   mounted() {
     this.$refs['wordCloud'].loadingData()
     setTimeout(() => {
-      this.wordCloudOpt.data = [
+      this.wordCloudOpt.vData = [
           {
             name: '困难救助',
             value: 83

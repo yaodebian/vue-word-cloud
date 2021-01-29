@@ -159,18 +159,18 @@ export default {
     },
     // get font size
     getFontSize(index) {
-      if (this.wordCloudOpt.fonts && !Array.isArray(this.wordCloudOpt.fonts)) {
-        throw new Error(`type error: option 'fonts' should be an array`)
+      if (this.wordCloudOpt.vFonts && !Array.isArray(this.wordCloudOpt.vFonts)) {
+        throw new Error(`type error: option 'vFonts' should be an array`)
       }
       if (
-        this.wordCloudOpt.fonts &&
-        Array.isArray(this.wordCloudOpt.fonts) &&
-        this.wordCloudOpt.fonts.length !== 0
+        this.wordCloudOpt.vFonts &&
+        Array.isArray(this.wordCloudOpt.vFonts) &&
+        this.wordCloudOpt.vFonts.length !== 0
       ) {
-        let len = this.wordCloudOpt.fonts.length
-        let font = this.wordCloudOpt.fonts[index]
+        let len = this.wordCloudOpt.vFonts.length
+        let font = this.wordCloudOpt.vFonts[index]
         if (!font) {
-          font = this.wordCloudOpt.fonts[len - 1]
+          font = this.wordCloudOpt.vFonts[len - 1]
         }
         return font
       } else {
@@ -179,16 +179,16 @@ export default {
     },
     // init data and font
     initData() {
-      if (this.wordCloudOpt.data) {
-        if (Array.isArray(this.wordCloudOpt.data)) {
-          if (this.wordCloudOpt.data.length === 0) {
+      if (this.wordCloudOpt.vData) {
+        if (Array.isArray(this.wordCloudOpt.vData)) {
+          if (this.wordCloudOpt.vData.length === 0) {
             return
           }
           this.wordCloudOpt.list = []
-          const addtionalAttrs = Object.keys(this.wordCloudOpt.data[0]).filter(
+          const addtionalAttrs = Object.keys(this.wordCloudOpt.vData[0]).filter(
             (key) => key !== 'name' && key !== 'value'
           )
-          this.wordCloudOpt.data.forEach((item, index) => {
+          this.wordCloudOpt.vData.forEach((item, index) => {
             const listItem = [item.name, this.getFontSize(index), item.value]
             const addtionalObj = {}
             addtionalAttrs.forEach((attr) => {
@@ -198,7 +198,7 @@ export default {
             this.wordCloudOpt.list.push(listItem)
           })
         } else {
-          throw new Error(`type error: option 'data' should be an array`)
+          throw new Error(`type error: option 'vData' should be an array`)
         }
       }
     },
@@ -212,9 +212,9 @@ export default {
         if (!item) {
           itemData = ''
         } else if (
-          this.wordCloudOpt.data &&
-          Array.isArray(this.wordCloudOpt.data) &&
-          this.wordCloudOpt.data.length
+          this.wordCloudOpt.vData &&
+          Array.isArray(this.wordCloudOpt.vData) &&
+          this.wordCloudOpt.vData.length
         ) {
           itemData = {
             name: item[0],
@@ -240,50 +240,50 @@ export default {
       }
       this.wordCloudOpt.hover = handler
     },
-    // init fonts
+    // init vFonts
     initFont() {
-      if (this.wordCloudOpt.fonts) {
-        if (!Array.isArray(this.wordCloudOpt.colors)) {
-          throw new Error(`type error: option 'colors' should be an array`)
+      if (this.wordCloudOpt.vFonts) {
+        if (!Array.isArray(this.wordCloudOpt.vFonts)) {
+          throw new Error(`type error: option 'vFonts' should be an array`)
         }
 
-        if (this.wordCloudOpt.fonts.length === 0 
+        if (this.wordCloudOpt.vFonts.length === 0 
           || !this.wordCloudOpt.list 
           || !Array.isArray(this.wordCloudOpt.list) 
           || this.wordCloudOpt.list.length === 0) {
           return
         }
 
-        const len = this.wordCloudOpt.fonts.length
+        const len = this.wordCloudOpt.vFonts.length
         this.wordCloudOpt.list.forEach((item, index) => {
           item[1] =
             index < len
-              ? this.wordCloudOpt.fonts[index]
-              : this.wordCloudOpt.fonts[len - 1]
+              ? this.wordCloudOpt.vFonts[index]
+              : this.wordCloudOpt.vFonts[len - 1]
         })
       }
     },
-    // init colors
+    // init vColors
     initColor() {
-      if (this.wordCloudOpt.colors) {
-        if (!Array.isArray(this.wordCloudOpt.colors)) {
-          throw new Error(`type error: option 'colors' should be an array`)
+      if (this.wordCloudOpt.vColors) {
+        if (!Array.isArray(this.wordCloudOpt.vColors)) {
+          throw new Error(`type error: option 'vColors' should be an array`)
         }
 
-        if (this.wordCloudOpt.colors.length === 0 
+        if (this.wordCloudOpt.vColors.length === 0 
           || !this.wordCloudOpt.list 
           || !Array.isArray(this.wordCloudOpt.list) 
           || this.wordCloudOpt.list.length === 0) {
           return
         }
 
-        const len = this.wordCloudOpt.colors.length
+        const len = this.wordCloudOpt.vColors.length
         this.wordCloudOpt.color = () => {
           const index = this.wordMark
           this.wordMark++
           return (
-            this.wordCloudOpt.colors[index] ||
-            this.wordCloudOpt.colors[len - 1]
+            this.wordCloudOpt.vColors[index] ||
+            this.wordCloudOpt.vColors[len - 1]
           )
         }
       }

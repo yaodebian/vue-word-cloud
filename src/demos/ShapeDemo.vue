@@ -25,8 +25,8 @@ export default {
           //   return `${item.name}<br>${item.value}`
           // },
         },
-        fonts: [10],
-        colors: [
+        vFonts: [10],
+        vColors: [
           'red',
           'yellow',
           '#84d9fa',
@@ -39,7 +39,7 @@ export default {
           '#cae765',
           '#cccccc'
         ],
-        data: [],
+        vData: [],
         weightFactor: 1.8,
         fontWeight: 'normal',
         fontFamily: 'Times, serif',
@@ -59,7 +59,7 @@ export default {
           value: 24
         })
       }
-      this.wordCloudOpt.data = list
+      this.wordCloudOpt.vData = list
     }, 6000)
   }
 }
