@@ -5,7 +5,7 @@
   "main": "dist/vue-word-cloud.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib --name vue-word-cloud src/index.js",
     "lint": "vue-cli-service lint"
   },
   "keywords": [
