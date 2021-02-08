@@ -5,8 +5,13 @@
   "main": "dist/vue-word-cloud.umd.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name vue-word-cloud src/index.js",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build": "npm run lint && vue-cli-service build --target lib --name vue-word-cloud src/index.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build"
+    }
   },
   "keywords": [
     "component",
