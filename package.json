@@ -2,7 +2,7 @@
   "name": "vue-word-cloud",
   "version": "0.1.0",
   "description": "a vue component of word cloud",
-  "main": "dist/vue-word-cloud.js",
+  "main": "dist/vue-word-cloud.umd.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name vue-word-cloud src/index.js",
@@ -28,6 +28,8 @@
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "babel-eslint": "^10.1.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "babel-plugin-transform-remove-debugger": "^6.9.4",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "sass": "^1.32.5",
