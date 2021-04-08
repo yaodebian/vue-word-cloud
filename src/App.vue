@@ -46,4 +46,10 @@ export default {
 .word-cloud__demo {
   margin-bottom: 20px;
 }
+
+.word-cloud-example {
+  height: 600px !important;
+  background: rgba(0, 0, 0, 0.8);
+  margin: 0 auto;
+}
 </style>

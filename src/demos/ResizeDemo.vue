@@ -1,19 +1,13 @@
 <template>
   <div>
     <h2>Demo5: Resize</h2>
-    <WordCloud ref="wordCloud" class="word-cloud" :option="wordCloudOpt" :resize="true"></WordCloud>
+    <WordCloud ref="wordCloud" class="word-cloud-example" :option="wordCloudOpt" :resize="true"></WordCloud>
   </div>
 </template>
 
 <script>
-// import components
-import WordCloud from '@/components/WordCloud.vue'
-
 export default {
   name: 'ResizeDemo',
-  components: {
-    WordCloud
-  },
   data() {
     return {
       wordCloudOpt: {
@@ -151,9 +145,4 @@ export default {
 </script>
 
 <style lang="scss">
-.word-cloud {
-  height: 600px;
-  background: rgba(0, 0, 0, 0.8);
-  margin: 0 auto;
-}
 </style>

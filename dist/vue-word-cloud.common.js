@@ -5849,12 +5849,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5f0e8e50-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/WordCloud.vue?vue&type=template&id=1f724449&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5f0e8e50-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/WordCloud.vue?vue&type=template&id=5dc1991e&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"box",staticClass:"word-cloud"},[_c('canvas',{ref:"wordcloud",staticClass:"word-cloud__box",style:(("cursor: " + _vm.cursor + ";"))}),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.showTooltip),expression:"showTooltip"}],staticClass:"word-cloud__tooltip",style:(("left: " + _vm.left + "; top: " + _vm.top + ";")),domProps:{"innerHTML":_vm._s(_vm.tooltipHtml)}}),(_vm.loadingBox)?_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.loading),expression:"loading"}]},[_vm._t("loading",[_c('WordCloudLoading')])],2):_vm._e()])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/WordCloud.vue?vue&type=template&id=1f724449&
+// CONCATENATED MODULE: ./src/components/WordCloud.vue?vue&type=template&id=5dc1991e&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
 var es_array_concat = __webpack_require__("99af");
@@ -6291,7 +6291,7 @@ var component = normalizeComponent(
   },
   data: function data() {
     return {
-      loading: true,
+      loading: false,
       wordCloudOpt: {},
       initStatus: false,
       wordCloudEl: '',

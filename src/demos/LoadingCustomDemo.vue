@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Demo2: Custom Loading</h2>
-    <WordCloud ref="wordCloud" class="word-cloud" :option="wordCloudOpt">
+    <WordCloud ref="wordCloud" class="word-cloud-example" :option="wordCloudOpt">
       <template v-slot:loading>
         <div class="loading">
           loading...
@@ -12,14 +12,8 @@
 </template>
 
 <script>
-// import components
-import WordCloud from '@/components/WordCloud.vue'
-
 export default {
   name: 'LoadingCustomDemo',
-  components: {
-    WordCloud
-  },
   data() {
     return {
       wordCloudOpt: {
@@ -157,12 +151,6 @@ export default {
 </script>
 
 <style lang="scss">
-.word-cloud {
-  height: 600px;
-  background: rgba(0, 0, 0, 0.8);
-  margin: 0 auto;
-}
-
 .loading {
   font-size: 30px;
   font-weight: bold;
